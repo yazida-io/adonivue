@@ -2,15 +2,11 @@
   "url": "http://127.0.0.1:3000",
   "entrypoints": {
     "main": {
-      "js": [
-        "http://127.0.0.1:3000/resources/ts/app.ts"
-      ],
+      "js": ["http://127.0.0.1:3000/resources/ts/app.ts"],
       "css": []
     },
     "client": {
-      "js": [
-        "http://127.0.0.1:3000/client/index.ts"
-      ],
+      "js": ["http://127.0.0.1:3000/client/index.ts"],
       "css": []
     }
   }

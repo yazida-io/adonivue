@@ -24,4 +24,4 @@ Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
 
-Route.get('/client', async ({ view }) => view.render('client/index'))
+Route.get('/client/:any?', async ({ view }) => view.render('client/index'))
