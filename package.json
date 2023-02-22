@@ -3,13 +3,28 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node ace serve --watch",
-    "build": "node ace build --production",
+    "dev": "concurrently 'yarn:dev:*' --kill-others",
+    "dev:adonis": "node ace serve --watch --no-assets",
+    "dev:vite": "vite --mode development",
+    "ace:build": "node ace build --production --no-assets",
+    "prod:setup": "mkdir -p build/tmp && cp .env build/",
+    "preview:build": "cd build/ && yarn install --production && yarn db:setup && node server.js",
+    "build": "yarn vite:build && yarn ace:build && yarn prod:setup",
     "start": "node server.js",
     "lint": "eslint . --ext=.ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "db:setup": "node ace migration:fresh && node ace db:seed",
+    "vite:build": "vite build",
+    "vite:preview": "vite preview",
+    "setup:db": "node ace migration:fresh && node ace db:seed",
+    "manifest": "node ace generate:manifest"
   },
   "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true,
+      "es2021": true
+    },
     "extends": [
       "plugin:adonis/typescriptApp",
       "prettier"
@@ -20,6 +35,11 @@
     "rules": {
       "prettier/prettier": [
         "error"
+      ]
+    },
+    "parserOptions": {
+      "extraFileExtensions": [
+        ".vue"
       ]
     }
   },
@@ -38,18 +58,31 @@
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.9.5",
+    "@adonisjs/vite-plugin-adonis": "^1.0.0-beta.0",
+    "@babel/core": "^7.17.0",
+    "@babel/preset-env": "^7.16.0",
     "@japa/preset-adonis": "^1.2.0",
     "@japa/runner": "^2.5.1",
+    "@symfony/webpack-encore": "4.1.1",
     "@types/proxy-addr": "^2.0.0",
     "@types/source-map-support": "^0.5.6",
+    "@vitejs/plugin-vue": "^4.0.0",
     "adonis-preset-ts": "^2.1.0",
+    "autoprefixer": "^10.4.13",
+    "concurrently": "^7.6.0",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-adonis": "^2.1.1",
     "eslint-plugin-prettier": "^4.2.1",
     "pino-pretty": "^9.3.0",
+    "postcss": "^8.4.21",
+    "postcss-loader": "^7.0.2",
     "prettier": "^2.8.4",
+    "tailwindcss": "^3.2.7",
     "typescript": "~4.6",
+    "vite": "^4.1.4",
+    "webpack": "^5.72",
+    "webpack-cli": "^4.9.1",
     "youch": "^3.2.3",
     "youch-terminal": "^2.2.0"
   },
@@ -61,6 +94,7 @@
     "@adonisjs/view": "^6.1.0",
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
-    "source-map-support": "^0.5.21"
+    "source-map-support": "^0.5.21",
+    "vue": "^3.2.47"
   }
 }
