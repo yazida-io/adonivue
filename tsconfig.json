@@ -3,6 +3,7 @@
   "include": ["**/*"],
   "exclude": ["node_modules", "build"],
   "compilerOptions": {
+    "lib": ["es5", "es6", "dom"],
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,
@@ -18,7 +19,9 @@
       "@adonisjs/session",
       "@adonisjs/view",
       "@adonisjs/shield",
-      "@japa/preset-adonis/build/adonis-typings"
+      "@japa/preset-adonis/build/adonis-typings",
+      "@adonisjs/lucid",
+      "@adonisjs/auth"
     ]
   }
 }

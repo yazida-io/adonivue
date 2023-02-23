@@ -1,13 +1,4 @@
-import { useLocalStorage } from '@vueuse/core'
-
-const auth = ({ next }) => {
-  const token = useLocalStorage('client-auth-token', null)
-  return token.value ? next() : next({ name: 'login' })
-}
-
-const guest = ({ next }) => {
-  const token = useLocalStorage('client-auth-token', null)
-  return !token.value ? next() : next({ name: 'home' })
-}
+import auth from './auth'
+import guest from './guest'
 
 export { auth, guest }
