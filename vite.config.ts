@@ -18,7 +18,7 @@ export default defineConfig({
       outputPath: 'public/assets',
       publicPath: '/assets',
       entryPoints: {
-        main: ['resources/ts/app.ts'],
+        main: ['resources/ts/main.ts'],
         client: ['client/index.ts'],
       },
     }),

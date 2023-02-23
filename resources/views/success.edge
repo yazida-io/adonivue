@@ -1,0 +1,19 @@
+@layout("layouts/default")
+
+@set('title', '✅ Connecting...')
+
+@section('body')
+  <div>
+    <p class="subtitle">
+      Connecting...
+    </p>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      localStorage.setItem('client-auth-token', '{{ token }}')
+      localStorage.setItem('client-auth-user', '{{{ JSON.stringify(user) }}}')
+      window.location.href = '/client'
+    }, 500)
+  </script>
+@end

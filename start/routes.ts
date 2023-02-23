@@ -27,3 +27,7 @@ Route.get('/', async ({ view }) => {
 })
 
 Route.get('/client/:any?', async ({ view }) => view.render('client/index'))
+
+Route.get('oauth/:provider/redirect', 'OAuthController.oauthRedirect')
+Route.get('oauth/:provider/callback', 'OAuthController.oauthCallback')
+Route.any('oauth/response', 'OAuthController.onOAuthResponse').as('oauth.response')

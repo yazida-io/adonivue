@@ -31,4 +31,19 @@ export default Env.rules({
   PG_USER: Env.schema.string(),
   PG_PASSWORD: Env.schema.string.optional(),
   PG_DB_NAME: Env.schema.string(),
+
+  GITHUB_CLIENT_ID: Env.schema.string(),
+  GITHUB_CLIENT_SECRET: Env.schema.string(),
+
+  GOOGLE_CLIENT_ID: Env.schema.string(),
+  GOOGLE_CLIENT_SECRET: Env.schema.string(),
+
+  TWITTER_CLIENT_ID: Env.schema.string(),
+  TWITTER_CLIENT_SECRET: Env.schema.string(),
+
+  LINKEDIN_CLIENT_ID: Env.schema.string(),
+  LINKEDIN_CLIENT_SECRET: Env.schema.string(),
+
+  FACEBOOK_CLIENT_ID: Env.schema.string(),
+  FACEBOOK_CLIENT_SECRET: Env.schema.string(),
 })
